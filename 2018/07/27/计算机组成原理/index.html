@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述0x00. 计算机发展1. 第一代（1946～1957）：电子管时代容量小、体积庞大、成本高、运算速度低，一般每秒几千到几万次 2. 第二代（1958～1964）：晶体管时代运算速度提高到每秒几万到几十万次，操作系统雏形 3. 第三代（1965～1971）：中小规模集成电路时代出现分时操作系统 4. 第四代（1972～今）：超大规模集成电路时代0x01. 摩尔定律摩尔定律，当价格不变时，集成电">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理">
+<meta property="og:url" content="https://SummerHello12138.github.io/2018/07/27/计算机组成原理/index.html">
+<meta property="og:site_name" content="Summer&#39;s 博客">
+<meta property="og:description" content="概述0x00. 计算机发展1. 第一代（1946～1957）：电子管时代容量小、体积庞大、成本高、运算速度低，一般每秒几千到几万次 2. 第二代（1958～1964）：晶体管时代运算速度提高到每秒几万到几十万次，操作系统雏形 3. 第三代（1965～1971）：中小规模集成电路时代出现分时操作系统 4. 第四代（1972～今）：超大规模集成电路时代0x01. 摩尔定律摩尔定律，当价格不变时，集成电">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://summerhello12138.github.io/2018/07/27/计算机组成原理/media/15326610714199/15326960197438.jpg">
+<meta property="og:image" content="https://summerhello12138.github.io/2018/07/27/计算机组成原理/media/15326610714199/15326966590775.jpg">
+<meta property="og:image" content="https://summerhello12138.github.io/2018/07/27/计算机组成原理/media/15326610714199/15326973507330.jpg">
+<meta property="og:updated_time" content="2018-09-15T14:25:12.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机组成原理">
+<meta name="twitter:description" content="概述0x00. 计算机发展1. 第一代（1946～1957）：电子管时代容量小、体积庞大、成本高、运算速度低，一般每秒几千到几万次 2. 第二代（1958～1964）：晶体管时代运算速度提高到每秒几万到几十万次，操作系统雏形 3. 第三代（1965～1971）：中小规模集成电路时代出现分时操作系统 4. 第四代（1972～今）：超大规模集成电路时代0x01. 摩尔定律摩尔定律，当价格不变时，集成电">
+<meta name="twitter:image" content="https://summerhello12138.github.io/2018/07/27/计算机组成原理/media/15326610714199/15326960197438.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://SummerHello12138.github.io/2018/07/27/计算机组成原理/"/>
+
+
+
+
+
+  <title>计算机组成原理 | Summer's 博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Summer's 博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一只菜鸟级的安全狗</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://SummerHello12138.github.io/2018/07/27/计算机组成原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xia Benhui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Summer's 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机组成原理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T11:11:11+08:00">
+                2018-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="0x00-计算机发展"><a href="#0x00-计算机发展" class="headerlink" title="0x00. 计算机发展"></a>0x00. 计算机发展</h2><h5 id="1-第一代（1946～1957）：电子管时代"><a href="#1-第一代（1946～1957）：电子管时代" class="headerlink" title="1. 第一代（1946～1957）：电子管时代"></a>1. 第一代（1946～1957）：电子管时代</h5><p>容量小、体积庞大、成本高、运算速度低，一般每秒几千到几万次</p>
+<h5 id="2-第二代（1958～1964）：晶体管时代"><a href="#2-第二代（1958～1964）：晶体管时代" class="headerlink" title="2. 第二代（1958～1964）：晶体管时代"></a>2. 第二代（1958～1964）：晶体管时代</h5><p>运算速度提高到每秒几万到几十万次，操作系统雏形</p>
+<h5 id="3-第三代（1965～1971）：中小规模集成电路时代"><a href="#3-第三代（1965～1971）：中小规模集成电路时代" class="headerlink" title="3. 第三代（1965～1971）：中小规模集成电路时代"></a>3. 第三代（1965～1971）：中小规模集成电路时代</h5><p>出现分时操作系统</p>
+<h5 id="4-第四代（1972～今）：超大规模集成电路时代"><a href="#4-第四代（1972～今）：超大规模集成电路时代" class="headerlink" title="4. 第四代（1972～今）：超大规模集成电路时代"></a>4. 第四代（1972～今）：超大规模集成电路时代</h5><h2 id="0x01-摩尔定律"><a href="#0x01-摩尔定律" class="headerlink" title="0x01. 摩尔定律"></a>0x01. 摩尔定律</h2><p><strong>摩尔定律</strong>，当价格不变时，集成电路上可容纳的晶体管数目，约每隔18个月便会增加一倍，性能也将提升一倍。</p>
+<h2 id="0x02-计算机的分类"><a href="#0x02-计算机的分类" class="headerlink" title="0x02. 计算机的分类"></a>0x02. 计算机的分类</h2><p>1）电子计算机分为<strong>电子模拟计算机</strong>和<strong>电子数字计算机</strong>。<br>2）用途：专用计算机、通用计算机<br>3）通用计算机：巨型机、大型机、小型机、微型机、单片机<br>4）指令和数据流：</p>
+<ul>
+<li>单指令和单数据流系统（SISD），冯·诺依曼系统</li>
+<li>单指令和多数据流系统（SIMD），阵列处理器和向量处理器</li>
+<li>多指令和单数据流系统（MISD），不存在</li>
+<li>多指令和多数据流系统（MIMD），多处理器和多计算机系统</li>
+</ul>
+<h2 id="0x03-计算机硬件组成"><a href="#0x03-计算机硬件组成" class="headerlink" title="0x03. 计算机硬件组成"></a>0x03. 计算机硬件组成</h2><h5 id="1-早期冯·诺依曼机"><a href="#1-早期冯·诺依曼机" class="headerlink" title="1. 早期冯·诺依曼机"></a>1. 早期冯·诺依曼机</h5><p>结构：<br><img src="media/15326610714199/15326960197438.jpg" alt=""><br>原因：早期运算器和控制器分离，存储器容量很小，故而设计成以运算器为中心，其他部件都通过运算器完成信息的传递。</p>
+<p>特点：<br>1）计算机硬件系统由运算器、存储器、控制器、输入设备和输出设备组成<br>2）指令和数据以同等地位存于存储器内，并可以按地址寻访<br>3）指令和数据均用二进制代码表示<br>4）指令由操作码和地址码组成，操作码用来表示操作的性质，地址码用来表示操作数载存储器中的位置<br>5）指令在存储器内按顺序存放<br>6）早期的冯·诺伊曼机以运算器为中心</p>
+<h5 id="2-现代计算机结构"><a href="#2-现代计算机结构" class="headerlink" title="2. 现代计算机结构"></a>2. 现代计算机结构</h5><p>结构：<br><img src="media/15326610714199/15326966590775.jpg" alt=""><br>原因：I/O操作尽可能绕过CPU，直接在I/O设备和存储器之间完成，以提高系统的整体运行效率。</p>
+<p>功能部件：<br>1）输入设备<br>将程序和数据以机器所能识别和接受的信息形式输入到计算机</p>
+<p>2）输出设备<br>将计算机处理的结果以人们所能接受的形式或其他系统所要求的信息形式输出</p>
+<p>3）存储器<br>存储器是计算机的存储部件，用来存放程序和数据<br>存储器分为<strong>主存储器（也称为内存储器）</strong>和<strong>辅助存储器（也称为外存储器）</strong>。</p>
+<p>主存储器的结构：<br><img src="media/15326610714199/15326973507330.jpg" alt=""></p>
+<p><strong>地址寄存器（MAR）</strong>存放访存地址，经过地址译码后找到所选的存储单元。位数对应着存储单元的个数，如MAR为10位，则有${2}^{10}=1024B=1K$个存储单元。<strong>MAR的长度与PC长度相等</strong>。<br><strong>数据寄存器（MDR）</strong>是主存和其他部件的中介机构，用于暂存要从存储器中读或写的信息。<strong>MDR的位数和存储字长相等</strong>，一般为字节的二次幂整数倍，如8位、16位、32位、64位等。</p>
+<p>4）运算器<br>计算机的执行部件，用于对数据进行加工处理，完成算术运算和逻辑运算<br>运算器的核心是算术逻辑单元ALU，包含若干通用寄存器，如累加器（ACC）、乘商寄存器（MQ）、操作数寄存器（X）、变址寄存器（IX）、基址寄存器（BR）等。<br>运算器还包含程序状态寄存器（PSW）。</p>
+<p>5）控制器<br>计算机的指挥中心，指挥各部件自动协调地进行工作<br>控制器由程序计数器（PC）、指令寄存器（IR）、控制单元（CU）组成。</p>
+<h2 id="0x04-计算机软件分类"><a href="#0x04-计算机软件分类" class="headerlink" title="0x04. 计算机软件分类"></a>0x04. 计算机软件分类</h2><h5 id="1-系统软件"><a href="#1-系统软件" class="headerlink" title="1. 系统软件"></a>1. 系统软件</h5><p>是一组保证计算机系统高效、正确运行的基础软件，通常作为系统资源提供给用户使用。</p>
+<h5 id="2-应用软件"><a href="#2-应用软件" class="headerlink" title="2. 应用软件"></a>2. 应用软件</h5><p>是指用户为解决某个应用领域中的各类问题而编制的程序。<br><strong>注：</strong>数据库管理系统（DBMS）是位于用户和操作系统之间的一层数据管理软件，是<strong>系统软件</strong>；数据库系统（DBS）是指计算机系统中引入数据库后的系统，一般由数据库、数据库管理系统、数据库管理员（DBA）和应用系统构成。</p>
+<h2 id="0x05-计算机工作过程"><a href="#0x05-计算机工作过程" class="headerlink" title="0x05. 计算机工作过程"></a>0x05. 计算机工作过程</h2><p>1）把程序和数据装入到主存储器中<br>2）从程序的起始地址运行程序<br>3）用程序的首地址从存储器中取第一条指令，经过译码、执行步骤等控制计算机各功能部件协同运行，完成该指令功能，并计算下一条指令地址。<br>4）用新得到的指令地址继续读出第二条指令并执行，直到程序结束为止</p>
+<p>例：将指令地址码指示的存储单元中的操作数取出后送至运算器的ACC中（操作码为OP(IR)，地址码为Ad(IR)）<br>取指令：PC-&gt;MAR-&gt;M-&gt;MDR-&gt;IR;    (PC)+1-&gt;PC<br>分析指令：OP(IR)-&gt;CU<br>执行指令：Ad(IR)-&gt;MAR-&gt;M-&gt;MDR-&gt;ACC</p>
+<h2 id="0x06-计算机系统多层次结构"><a href="#0x06-计算机系统多层次结构" class="headerlink" title="0x06. 计算机系统多层次结构"></a>0x06. 计算机系统多层次结构</h2><h5 id="1-微程序机器层"><a href="#1-微程序机器层" class="headerlink" title="1. 微程序机器层"></a>1. 微程序机器层</h5><p>由机器硬件直接执行微指令</p>
+<h5 id="2-传统机器语言层"><a href="#2-传统机器语言层" class="headerlink" title="2. 传统机器语言层"></a>2. 传统机器语言层</h5><p>由微程序解释机器指令系统</p>
+<h5 id="3-操作系统层"><a href="#3-操作系统层" class="headerlink" title="3. 操作系统层"></a>3. 操作系统层</h5><p>混合层，包含机器指令和广义指令。</p>
+<h5 id="4-汇编语言层"><a href="#4-汇编语言层" class="headerlink" title="4. 汇编语言层"></a>4. 汇编语言层</h5><p>由汇编程序支持和执行</p>
+<h5 id="5-高级语言层"><a href="#5-高级语言层" class="headerlink" title="5. 高级语言层"></a>5. 高级语言层</h5><p>面向用户，由高级语言编译程序支持和执行</p>
+<p><strong>本课程讨论第一层和第二层</strong>的组成原理与设计。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/11/15366684711365/" rel="prev" title="图的遍历">
+                图的遍历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xia Benhui</p>
+              <p class="site-description motion-element" itemprop="description">～信息安全专业，最近开始对插画有兴趣～</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-计算机发展"><span class="nav-number">1.1.</span> <span class="nav-text">0x00. 计算机发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-第一代（1946～1957）：电子管时代"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1. 第一代（1946～1957）：电子管时代</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-第二代（1958～1964）：晶体管时代"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2. 第二代（1958～1964）：晶体管时代</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-第三代（1965～1971）：中小规模集成电路时代"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3. 第三代（1965～1971）：中小规模集成电路时代</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-第四代（1972～今）：超大规模集成电路时代"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4. 第四代（1972～今）：超大规模集成电路时代</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-摩尔定律"><span class="nav-number">1.2.</span> <span class="nav-text">0x01. 摩尔定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-计算机的分类"><span class="nav-number">1.3.</span> <span class="nav-text">0x02. 计算机的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-计算机硬件组成"><span class="nav-number">1.4.</span> <span class="nav-text">0x03. 计算机硬件组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-早期冯·诺依曼机"><span class="nav-number">1.4.0.0.1.</span> <span class="nav-text">1. 早期冯·诺依曼机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-现代计算机结构"><span class="nav-number">1.4.0.0.2.</span> <span class="nav-text">2. 现代计算机结构</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x04-计算机软件分类"><span class="nav-number">1.5.</span> <span class="nav-text">0x04. 计算机软件分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-系统软件"><span class="nav-number">1.5.0.0.1.</span> <span class="nav-text">1. 系统软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-应用软件"><span class="nav-number">1.5.0.0.2.</span> <span class="nav-text">2. 应用软件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x05-计算机工作过程"><span class="nav-number">1.6.</span> <span class="nav-text">0x05. 计算机工作过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x06-计算机系统多层次结构"><span class="nav-number">1.7.</span> <span class="nav-text">0x06. 计算机系统多层次结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-微程序机器层"><span class="nav-number">1.7.0.0.1.</span> <span class="nav-text">1. 微程序机器层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-传统机器语言层"><span class="nav-number">1.7.0.0.2.</span> <span class="nav-text">2. 传统机器语言层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-操作系统层"><span class="nav-number">1.7.0.0.3.</span> <span class="nav-text">3. 操作系统层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-汇编语言层"><span class="nav-number">1.7.0.0.4.</span> <span class="nav-text">4. 汇编语言层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-高级语言层"><span class="nav-number">1.7.0.0.5.</span> <span class="nav-text">5. 高级语言层</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xia Benhui</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
